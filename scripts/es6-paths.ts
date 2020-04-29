@@ -7,6 +7,7 @@ import { flow } from "fp-ts/lib/function";
 
 // get all files in dist/es6
 // replace `fp-ts/lib` with `fp-ts/es6`
+// @todo recursively read into directories.
 
 const replace = (a: RegExp, b: string) => (c: string) => c.replace(a, b);
 
