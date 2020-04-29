@@ -1,7 +1,7 @@
 {
   "name": "dom-ts",
   "version": "0.0.0",
-  "description": "A DOM manipulation library for the functionally inclined",
+  "description": "fp-ts binding for the DOM",
   "main": "src/index.ts",
   "author": "Wayne Van Son",
   "license": "MIT",
