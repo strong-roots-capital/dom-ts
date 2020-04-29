@@ -2,27 +2,6 @@ import { either, io, ioEither, option, array } from "fp-ts";
 import { pipe } from "fp-ts/lib/pipeable";
 import { IOEither } from "fp-ts/lib/IOEither";
 
-export interface QuerySelector {
-  <K extends keyof HTMLElementTagNameMap>(selectors: K):
-    | HTMLElementTagNameMap[K]
-    | null;
-  <K extends keyof SVGElementTagNameMap>(selectors: K):
-    | SVGElementTagNameMap[K]
-    | null;
-  <E extends Element = Element>(selectors: string): <T extends ParentNode>(
-    node: T
-  ) => IOEither<null, E>;
-}
-
-export const querySelector: QuerySelector = <E extends Element>(
-  selectors: string
-) => <T extends ParentNode>(node: T) =>
-  pipe(
-    node.querySelector<E>(selectors),
-    option.fromNullable,
-    ioEither.fromOption(() => null)
-  );
-
 export const contains = <T extends Node>(other: T) => <U extends Node>(
   node: U
 ) => node.contains(other);
