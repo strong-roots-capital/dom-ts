@@ -1,4 +1,4 @@
-# 1dom-ts`
+# `dom-ts`
 
 DOM bindings for the `fp-ts` ecosystem.
 
@@ -20,22 +20,9 @@ yarn add dom-ts fp-ts
 npm install dom-ts fp-ts --save
 ```
 
+Note that `fp-ts` is a peer dependency.
+
 ## Consuming
-
-### Browser
-
-If for some reason you want this in your browser, here are some CDNs:
-
-```sh
-# Minified
-https://cdn.jsdelivr.net/npm/dom-ts@latest/dist/umd/index.min.js
-
-# Not Minified
-https://cdn.jsdelivr.net/npm/dom-ts@latest/dist/umd/index.js
-
-```
-
-### Modules
 
 ```ts
 import {} from "dom-ts";
@@ -44,6 +31,9 @@ import {} from "dom-ts/es6/*";
 import {} from "dom-ts/lib";
 import {} from "dom-ts/lib/*";
 ```
+
+`lib` is for commonjs, where as `es6` is esmodules.
+Some bundlers can't module commonjs with tree shaking on, which is why this option is available.
 
 ## features
 
