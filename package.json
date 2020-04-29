@@ -1,12 +1,16 @@
 {
   "name": "dom-ts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "fp-ts binding for the DOM",
   "main": "dist/lib/index.js",
   "module": "dist/es6/index.js",
   "author": "Wayne Van Son",
   "license": "MIT",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waynevanson/dom-ts"
+  },
   "scripts": {
     "watch": "jest --watch",
     "build": "yarn build:lib && yarn build:es6",
