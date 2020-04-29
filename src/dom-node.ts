@@ -2,12 +2,17 @@ import { array, either, ioEither } from "fp-ts";
 import { IO } from "fp-ts/lib/IO";
 import { pipe } from "fp-ts/lib/pipeable";
 
-export const contains = <T extends Node>(other: T) => <U extends Node>(
-  node: U
-) => node.contains(other);
+/**
+ * @summary
+ * Asserts if the node is a descendant of the given ancestor.
+ */
+export const contains = <T extends Node>(node: T) => <U extends Node>(
+  ancestor: U
+) => ancestor.contains(node);
 
 /**
  * If looking for the refChild = null version, please use appendChild.
+ * @todo refactor into null
  */
 export const insertBefore = <T extends Node, U extends Node>(
   newChild: T,
@@ -22,12 +27,22 @@ export const insertBefore = <T extends Node, U extends Node>(
     ioEither.map((parent) => parent.insertBefore(newChild, refChild))
   );
 
+/**
+ * @summary
+ * Add a child to the end of the parent's children.
+ */
 export const appendChild = <T extends Node>(node: T) => <N extends Node>(
 
-export const remove = <T extends ChildNode>(childNode: T): IO<void> => () =>
-  childNode.remove();
+/**
+ * @summary
+ * Remove a child.
+ */
 
-export const insertAtIndex = <T extends Node>(child: T, index: number) => <
+/**
+ * @summary
+ * Inserts a child at the given index.
+ * If the index is out of the insertion range, null is returned.
+ */
   N extends Node
 >(
   parent: N
