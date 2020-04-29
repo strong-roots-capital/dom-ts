@@ -1,6 +1,6 @@
-import { either, io, ioEither, option, array } from "fp-ts";
+import { array, either, ioEither } from "fp-ts";
+import { IO } from "fp-ts/lib/IO";
 import { pipe } from "fp-ts/lib/pipeable";
-import { IOEither } from "fp-ts/lib/IOEither";
 
 export const contains = <T extends Node>(other: T) => <U extends Node>(
   node: U
@@ -24,10 +24,10 @@ export const insertBefore = <T extends Node, U extends Node>(
 
 export const appendChild = <T extends Node>(child: T) => <N extends Node>(
   node: N
-) => io.of(node.appendChild(child));
+): IO<T> => () => node.appendChild(child);
 
-export const remove = <T extends ChildNode>(childNode: T) =>
-  io.of(childNode.remove());
+export const remove = <T extends ChildNode>(childNode: T): IO<void> => () =>
+  childNode.remove();
 
 export const insertAtIndex = <T extends Node>(child: T, index: number) => <
   N extends Node
