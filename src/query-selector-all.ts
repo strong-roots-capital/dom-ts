@@ -3,8 +3,8 @@ import { IO } from "fp-ts/lib/IO";
 import { pipe } from "fp-ts/lib/pipeable";
 
 export interface QuerySelectorAllHTML {
-  <K extends keyof HTMLElementTagNameMap>(selectors: K): <T extends ParentNode>(
-    node: T
+  <K extends keyof HTMLElementTagNameMap>(selectors: K): (
+    node: ParentNode
   ) => IO<Array<HTMLElementTagNameMap[K]>>;
 }
 
@@ -20,9 +20,9 @@ export interface QuerySelectorAllElement {
 }
 
 export interface QuerySelectorAll
-  extends QuerySelectorAllElement,
+  extends QuerySelectorAllHTML,
     QuerySelectorAllSVG,
-    QuerySelectorAllHTML {}
+    QuerySelectorAllElement {}
 
 export const querySelectorAll: QuerySelectorAll = <E extends Element = Element>(
   selectors: string

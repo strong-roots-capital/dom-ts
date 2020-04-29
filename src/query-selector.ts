@@ -3,33 +3,30 @@ import { IOEither } from "fp-ts/lib/IOEither";
 import { pipe } from "fp-ts/lib/pipeable";
 
 export interface QuerySelectorHTML {
-  <K extends keyof HTMLElementTagNameMap>(selectors: K): <T extends ParentNode>(
-    node: T
+  <K extends keyof HTMLElementTagNameMap>(selectors: K): (
+    node: ParentNode
   ) => IOEither<null, HTMLElementTagNameMap[K]>;
 }
 
 export interface QuerySelectorSVG {
-  <K extends keyof SVGElementTagNameMap>(selectors: K): <T extends ParentNode>(
-    node: T
+  <K extends keyof SVGElementTagNameMap>(selectors: K): (
+    node: ParentNode
   ) => IOEither<null, SVGElementTagNameMap[K]>;
 }
 export interface QuerySelectorElement {
-  <E extends Element = Element>(selectors: string): <T extends ParentNode>(
-    node: T
+  <E extends Element = Element>(selectors: string): (
+    node: ParentNode
   ) => IOEither<null, E>;
 }
 
 export interface QuerySelector
-  extends QuerySelectorElement,
+  extends QuerySelectorHTML,
     QuerySelectorSVG,
-    QuerySelectorHTML {}
+    QuerySelectorElement {}
 
-export const querySelector: QuerySelector = <
-  K extends string,
-  E extends Element
->(
-  selectors: K
-) => <T extends ParentNode>(node: T): IOEither<null, E> =>
+export const querySelector: QuerySelector = <E extends Element>(
+  selectors: string
+) => (node: ParentNode): IOEither<null, E> =>
   pipe(
     node.querySelector<E>(selectors),
     either.fromNullable(null),
