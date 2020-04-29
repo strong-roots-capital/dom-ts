@@ -1,11 +1,22 @@
 {
   "name": "dom-ts",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "fp-ts binding for the DOM",
   "main": "src/index.ts",
   "author": "Wayne Van Son",
   "license": "MIT",
   "private": false,
+  "module": "dist",
+  "scripts": {
+    "watch": "jest --watch",
+    "build": "tsc",
+    "test": "jest",
+    "prepublish": "yarn build && yarn test"
+  },
+  "files": [
+    "LICENSE",
+    "dist"
+  ],
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "fp-ts": "^2.5.4",
