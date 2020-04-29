@@ -1,6 +1,7 @@
-import { either, ioEither } from "fp-ts";
-import { IOEither } from "fp-ts/lib/IOEither";
+import * as either from "fp-ts/lib/Either";
+import * as ioEither from "fp-ts/lib/IOEither";
 import { pipe } from "fp-ts/lib/pipeable";
+import { IOEither } from "fp-ts/lib/IOEither";
 
 export interface QuerySelectorHTML {
   <K extends keyof HTMLElementTagNameMap>(selectors: K): (

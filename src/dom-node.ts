@@ -1,7 +1,10 @@
-import { array, either, ioEither, option } from "fp-ts";
 import { IO } from "fp-ts/lib/IO";
 import { pipe } from "fp-ts/lib/pipeable";
 import { flow } from "fp-ts/lib/function";
+import * as array from "fp-ts/lib/Array";
+import * as either from "fp-ts/lib/Either";
+import * as ioEither from "fp-ts/lib/IOEither";
+import * as option from "fp-ts/lib/Option";
 
 /**
  * @summary

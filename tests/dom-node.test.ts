@@ -1,5 +1,5 @@
 //@ts-ignore
-import jsdom from "global-jsdom";
+import * as jsdom from "global-jsdom";
 import {
   contains,
   insertBefore,

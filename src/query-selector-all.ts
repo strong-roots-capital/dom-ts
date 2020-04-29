@@ -1,6 +1,6 @@
-import { io } from "fp-ts";
 import { IO } from "fp-ts/lib/IO";
 import { pipe } from "fp-ts/lib/pipeable";
+import * as io from "fp-ts/lib/IO";
 
 export interface QuerySelectorAllHTML {
   <K extends keyof HTMLElementTagNameMap>(selectors: K): (
