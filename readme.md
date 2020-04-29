@@ -45,8 +45,6 @@ import {} from "dom-ts/lib";
 import {} from "dom-ts/lib/*";
 ```
 
-Just like fp-ts, we will also build
-
 ## features
 
 - Replaces imperative prototype methods on objects with functions, for more predictable workflow.
