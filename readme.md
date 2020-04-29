@@ -1,12 +1,51 @@
-# dom-ts
+# 1dom-ts`
 
 DOM bindings for the `fp-ts` ecosystem.
 
-## notice
+## NOTICE
 
 This is still in active development, as seen by the version 0.\*. breaking changes are bound to happen.
 
 Please issue a pull for any requests, questions and concerns.
+
+## Installing
+
+```sh
+# yarn
+yarn add dom-ts fp-ts
+
+# OR
+
+# npm
+npm install dom-ts fp-ts --save
+```
+
+## Consuming
+
+### Browser
+
+If for some reason you want this in your browser, here are some CDNs:
+
+```sh
+# Minified
+https://cdn.jsdelivr.net/npm/dom-ts@latest/dist/umd/index.min.js
+
+# Not Minified
+https://cdn.jsdelivr.net/npm/dom-ts@latest/dist/umd/index.js
+
+```
+
+### Modules
+
+```ts
+import {} from "dom-ts";
+import {} from "dom-ts/es6";
+import {} from "dom-ts/es6/*";
+import {} from "dom-ts/lib";
+import {} from "dom-ts/lib/*";
+```
+
+Just like fp-ts, we will also build
 
 ## features
 
@@ -16,16 +55,7 @@ Please issue a pull for any requests, questions and concerns.
 - Expected DOM functions.
 - Additional utility functions.
 
-## why
-
-Functional programming is taking over front end development (thank goodness).
-
-The methods of manipulating the DOM are extremely imperative.
-There are no `fp-ts` ways to manipulate easily.
-
-This library is to provide methods that are functional, using the `fp-ts`' Higher Kinded Type system, such as `Option` and `Either`.
-
-## changes
+## Primary differences from DOM methods
 
 - Methods returning `E | null` are transformed to `Option<E>`
 - Methods returning `nodelist<E>` are transformed to `Array<E>`
