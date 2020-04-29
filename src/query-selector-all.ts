@@ -13,6 +13,7 @@ export interface QuerySelectorAllSVG {
     node: T
   ) => IO<Array<SVGElementTagNameMap[K]>>;
 }
+
 export interface QuerySelectorAllElement {
   <E extends Element = Element>(selectors: string): <T extends ParentNode>(
     node: T

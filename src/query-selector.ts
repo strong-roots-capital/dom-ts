@@ -13,6 +13,7 @@ export interface QuerySelectorSVG {
     node: ParentNode
   ) => IOEither<null, SVGElementTagNameMap[K]>;
 }
+
 export interface QuerySelectorElement {
   <E extends Element = Element>(selectors: string): (
     node: ParentNode
