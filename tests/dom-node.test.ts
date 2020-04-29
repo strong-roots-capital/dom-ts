@@ -4,7 +4,7 @@ import {
   contains,
   insertBefore,
   appendChild,
-  insertAtIndex,
+  insertChildAtIndex,
 } from "../src/dom-node";
 import { either } from "fp-ts";
 import { pipe } from "fp-ts/lib/pipeable";
@@ -79,7 +79,7 @@ describe("insertAtIndex", () => {
       const child = document.createElement("li");
       const index = 0;
 
-      const result = pipe(node, insertAtIndex(child, index))();
+      const result = pipe(node, insertChildAtIndex(child, index))();
 
       expect(result).toStrictEqual(either.right(child));
       expect(node.childNodes.item(index)).toStrictEqual(child);
@@ -96,7 +96,7 @@ describe("insertAtIndex", () => {
       const child = document.createElement("li");
       const index = 0;
 
-      const result = pipe(node, insertAtIndex(child, index))();
+      const result = pipe(node, insertChildAtIndex(child, index))();
 
       expect(result).toStrictEqual(either.right(child));
       expect(node.childNodes.item(index)).toStrictEqual(child);
@@ -113,7 +113,7 @@ describe("insertAtIndex", () => {
       const child = document.createElement("li");
       const index = 1;
 
-      const result = pipe(node, insertAtIndex(child, index))();
+      const result = pipe(node, insertChildAtIndex(child, index))();
 
       expect(result).toStrictEqual(either.right(child));
       expect(node.childNodes.item(index)).toStrictEqual(child);
@@ -131,7 +131,7 @@ describe("insertAtIndex", () => {
       const child = document.createElement("li");
       const index = 2;
 
-      const result = pipe(node, insertAtIndex(child, index))();
+      const result = pipe(node, insertChildAtIndex(child, index))();
 
       expect(result).toStrictEqual(either.right(child));
       expect(node.childNodes.item(index)).toStrictEqual(child);
@@ -145,7 +145,7 @@ describe("insertAtIndex", () => {
       const child = document.createElement("li");
       const index = -1;
 
-      const result = pipe(node, insertAtIndex(child, index))();
+      const result = pipe(node, insertChildAtIndex(child, index))();
 
       expect(either.isLeft(result)).toBeTruthy();
       expect(node.childNodes.length).toBe(0);
@@ -162,7 +162,7 @@ describe("insertAtIndex", () => {
       const child = document.createElement("li");
       const index = -1;
 
-      const result = pipe(node, insertAtIndex(child, index))();
+      const result = pipe(node, insertChildAtIndex(child, index))();
 
       expect(either.isLeft(result)).toBeTruthy();
       expect(node.childNodes.length).toBe(2);
@@ -174,7 +174,7 @@ describe("insertAtIndex", () => {
       const child = document.createElement("li");
       const index = 1;
 
-      const result = pipe(node, insertAtIndex(child, index))();
+      const result = pipe(node, insertChildAtIndex(child, index))();
 
       expect(either.isLeft(result)).toBeTruthy();
       expect(node.childNodes.length).toBe(0);
@@ -191,7 +191,7 @@ describe("insertAtIndex", () => {
       const child = document.createElement("li");
       const index = 3;
 
-      const result = pipe(node, insertAtIndex(child, index))();
+      const result = pipe(node, insertChildAtIndex(child, index))();
 
       expect(either.isLeft(result)).toBeTruthy();
       expect(node.childNodes.length).toBe(2);

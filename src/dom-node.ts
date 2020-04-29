@@ -22,9 +22,7 @@ export const insertBefore = <T extends Node, U extends Node>(
     ioEither.map((parent) => parent.insertBefore(newChild, refChild))
   );
 
-export const appendChild = <T extends Node>(child: T) => <N extends Node>(
-  node: N
-): IO<T> => () => node.appendChild(child);
+export const appendChild = <T extends Node>(node: T) => <N extends Node>(
 
 export const remove = <T extends ChildNode>(childNode: T): IO<void> => () =>
   childNode.remove();
