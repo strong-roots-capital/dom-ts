@@ -1,6 +1,7 @@
-import { array, either, ioEither } from "fp-ts";
+import { array, either, ioEither, option } from "fp-ts";
 import { IO } from "fp-ts/lib/IO";
 import { pipe } from "fp-ts/lib/pipeable";
+import { flow } from "fp-ts/lib/function";
 
 /**
  * @summary
@@ -40,24 +41,23 @@ export const appendChild = <T extends Node>(node: T) => <N extends Node>(
 export const remove = <T extends ChildNode>(node: T): IO<void> => () =>
   node.remove();
 
+const isInsertableIndex = (index: number, values: any[]) =>
+  index >= 0 && index <= values.length;
+
 /**
  * @summary
  * Inserts a child at the given index.
  * If the index is out of the insertion range, null is returned.
  */
+export const insertChildAtIndex = <T extends Node>(node: T, index: number) => <
   N extends Node
 >(
   parent: N
 ) =>
   pipe(
-    parent.childNodes,
-    either.fromPredicate(
-      (c) => array.isOutOfBound(index, Array.from(c)),
-      (c) => [
-        `Cannot insert at index "${index}" when arrayLike length is "${c.length}"`,
-      ]
-    ),
-    either.map((c) => c.item(index + 1)),
-    ioEither.fromEither,
-    ioEither.map((ref) => parent.insertBefore(child, ref))
+    Array.from(parent.childNodes),
+    option.fromPredicate((c) => isInsertableIndex(index, c)),
+    option.map(flow((a) => array.lookup(index + 1, a), option.toNullable)),
+    ioEither.fromOption(() => null),
+    ioEither.map((ref) => parent.insertBefore(node, ref))
   );
