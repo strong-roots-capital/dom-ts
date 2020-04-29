@@ -30,11 +30,15 @@ export const insertBefore = <T extends Node, U extends Node>(
  * Add a child to the end of the parent's children.
  */
 export const appendChild = <T extends Node>(node: T) => <N extends Node>(
+  parent: N
+): IO<T> => () => parent.appendChild(node);
 
 /**
  * @summary
  * Remove a child.
  */
+export const remove = <T extends ChildNode>(node: T): IO<void> => () =>
+  node.remove();
 
 /**
  * @summary
