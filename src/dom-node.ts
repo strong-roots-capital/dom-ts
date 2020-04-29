@@ -20,9 +20,7 @@ export const insertBefore = <T extends Node, U extends Node>(
 ) => <N extends Node>(node: N) =>
   pipe(
     node,
-    either.fromPredicate(contains(refChild), () => [
-      '"Refchild" is not a child of "Node".',
-    ]),
+    either.fromPredicate(contains(refChild), () => null),
     ioEither.fromEither,
     ioEither.map((parent) => parent.insertBefore(newChild, refChild))
   );
