@@ -1,4 +1,4 @@
-export type RecordHTMLElementEventHandlersMap = {
+export type RecordHTMLElementEventHandlersAttributes = {
   abort: "onabort";
   animationcancel: "onanimationcancel";
   animationend: "onanimationend";
