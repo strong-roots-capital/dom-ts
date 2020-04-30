@@ -145,10 +145,11 @@ export type RecordHTMLElementEventHandlersAttributes = {
 };
 
 export type EventHandlerToAttribute<
-  K extends keyof RecordHTMLElementEventHandlersMap
-> = RecordHTMLElementEventHandlersMap[K];
+  K extends keyof T,
+  T = RecordHTMLElementEventHandlersAttributes
+> = T[K];
 
 export type EventAttributeToHandler<
   V extends T[keyof T],
-  T = RecordHTMLElementEventHandlersMap
+  T = RecordHTMLElementEventHandlersAttributes
 > = { [P in keyof T]: T[P] extends V ? P : never }[keyof T];
