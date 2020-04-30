@@ -1,4 +1,4 @@
-export type RecordHTMLElementEventHandlersAttributes = {
+export type HTMLElementEventTypeToEventAttr = {
   abort: "onabort";
   animationcancel: "onanimationcancel";
   animationend: "onanimationend";
@@ -146,10 +146,10 @@ export type RecordHTMLElementEventHandlersAttributes = {
 
 export type EventHandlerToAttribute<
   K extends keyof T,
-  T = RecordHTMLElementEventHandlersAttributes
+  T = HTMLElementEventTypeToEventAttr
 > = T[K];
 
 export type EventAttributeToHandler<
   V extends T[keyof T],
-  T = RecordHTMLElementEventHandlersAttributes
+  T = HTMLElementEventTypeToEventAttr
 > = { [P in keyof T]: T[P] extends V ? P : never }[keyof T];

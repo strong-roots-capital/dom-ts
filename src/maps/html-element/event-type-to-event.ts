@@ -1,4 +1,4 @@
-export type RecordHTMLElementEventHandlersMap = {
+export type HTMLElementEventTypeToEvent = {
   abort: UIEvent;
   animationcancel: AnimationEvent;
   animationend: AnimationEvent;

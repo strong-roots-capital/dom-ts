@@ -1,11 +1,11 @@
 import { IO } from "fp-ts/lib/IO";
 import {
-  HTMLElementEventMapAll,
-  RecordHTMLElementMap,
+  HTMLElementNameToEventMap,
+  HTMLElementNameToObject,
 } from "./maps/html-element";
 
-export type EventTagToEventMap = HTMLElementEventMapAll;
-export type EventTagToElement = RecordHTMLElementMap;
+export type EventTagToEventMap = HTMLElementNameToEventMap;
+export type EventTagToElement = HTMLElementNameToObject;
 export type EventProperties = keyof (EventTagToEventMap & EventTagToElement);
 
 /**
