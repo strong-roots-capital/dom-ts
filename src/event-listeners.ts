@@ -5,8 +5,8 @@ import {
 } from "./associative-maps";
 
 export type EventTagToEventMap = HTMLElementNameToEventMap;
-export type EventTagToElement = HTMLElementNameToObject;
-export type EventProperties = keyof (EventTagToEventMap & EventTagToElement);
+export type EventTagToObject = HTMLElementNameToObject;
+export type EventProperties = keyof (EventTagToEventMap & EventTagToObject);
 
 /**
  * @summary
@@ -38,7 +38,7 @@ export const createEventListener = <
   // options for event listener
   O extends AddEventListenerOptions = AddEventListenerOptions,
   // element from name
-  T extends EventTarget = EventTagToElement[P],
+  T extends EventTarget = EventTagToObject[P],
   // eventmap from event name
   E = EventTagToEventMap[P]
 >(
@@ -67,7 +67,7 @@ export const addEventListener = <
   // options for event listener
   O extends AddEventListenerOptions = AddEventListenerOptions,
   // element from name
-  T extends EventTarget = EventTagToElement[P],
+  T extends EventTarget = EventTagToObject[P],
   // eventmap from event name
   E = EventTagToEventMap[P]
 >(
@@ -88,7 +88,7 @@ export const removeEventListener = <
   // options for event listener
   O extends AddEventListenerOptions = AddEventListenerOptions,
   // element from name
-  T extends EventTarget = EventTagToElement[P],
+  T extends EventTarget = EventTagToObject[P],
   // eventmap from event name
   E = EventTagToEventMap[P]
 >(
