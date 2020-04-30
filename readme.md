@@ -35,6 +35,10 @@ import {} from "dom-ts/lib/*";
 `lib` is for commonjs, where as `es6` is esmodules.
 Some bundlers can't module commonjs with tree shaking on, which is why this option is available.
 
+## examples
+
+Gotta do these soon...
+
 ## features
 
 - Replaces imperative prototype methods on objects with functions, for more predictable workflow.
