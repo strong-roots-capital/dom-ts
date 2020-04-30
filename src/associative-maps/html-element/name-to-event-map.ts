@@ -1,4 +1,6 @@
-export type HTMLElementNameToEventMap =
+import { RecordClean } from "../../util";
+
+type NameToEventMap =
   // prettier-ignore
   Record<"audio", HTMLMediaElementEventMap> &
   Record<"body", HTMLBodyElementEventMap> &
@@ -122,3 +124,4 @@ export type HTMLElementNameToEventMap =
     | "wbr",
     HTMLElementEventMap
   >;
+export type HTMLElementNameToEventMap = RecordClean<NameToEventMap>;

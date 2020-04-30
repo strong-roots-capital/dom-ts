@@ -2,7 +2,7 @@ import { IO } from "fp-ts/lib/IO";
 import {
   HTMLElementNameToEventMap,
   HTMLElementNameToObject,
-} from "./maps/html-element";
+} from "./associative-maps";
 
 export type EventTagToEventMap = HTMLElementNameToEventMap;
 export type EventTagToElement = HTMLElementNameToObject;

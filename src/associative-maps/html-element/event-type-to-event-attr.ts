@@ -144,12 +144,12 @@ export type HTMLElementEventTypeToEventAttr = {
   progress: "onprogress";
 };
 
-export type EventHandlerToAttribute<
+export type HTMLElementEventHandlerToAttribute<
   K extends keyof T,
   T = HTMLElementEventTypeToEventAttr
 > = T[K];
 
-export type EventAttributeToHandler<
+export type HTMLElementEventAttributeToHandler<
   V extends T[keyof T],
   T = HTMLElementEventTypeToEventAttr
 > = { [P in keyof T]: T[P] extends V ? P : never }[keyof T];
