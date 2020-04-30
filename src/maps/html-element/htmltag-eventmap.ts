@@ -139,10 +139,9 @@ export type RecordHTMLVideoElementEventMap = Record<
   HTMLVideoElementEventMap
 >;
 
-export type HTMLElementEventMapAll =
-  | RecordHTMLElementEventMap
-  | RecordHTMLMediaElementEventMap
-  | RecordHTMLBodyElementEventMap
-  | RecordHTMLFrameSetElementEventMap
-  | RecordHTMLMarqueeElementEventMap
-  | RecordHTMLVideoElementEventMap;
+export type HTMLElementEventMapAll = RecordHTMLElementEventMap &
+  RecordHTMLMediaElementEventMap &
+  RecordHTMLBodyElementEventMap &
+  RecordHTMLFrameSetElementEventMap &
+  RecordHTMLMarqueeElementEventMap &
+  RecordHTMLVideoElementEventMap;
