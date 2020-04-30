@@ -43,7 +43,8 @@ Some bundlers can't module commonjs with tree shaking on, which is why this opti
 - Expected DOM functions.
 - Additional utility functions.
 
-## Primary differences from DOM methods
+## Primary differences
 
 - Methods returning `E | null` are transformed to `Option<E>`
 - Methods returning `nodelist<E>` are transformed to `Array<E>`
+- Inserting an already existing node into the DOM doesn't work. Instead, delete it first.
