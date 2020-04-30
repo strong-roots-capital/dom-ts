@@ -1,18 +1,12 @@
-import { IO } from "fp-ts/lib/IO";
-import { pipe } from "fp-ts/lib/pipeable";
-import { flow } from "fp-ts/lib/function";
 import * as array from "fp-ts/lib/Array";
 import * as either from "fp-ts/lib/Either";
+import { flow } from "fp-ts/lib/function";
+import { IO } from "fp-ts/lib/IO";
 import * as ioEither from "fp-ts/lib/IOEither";
+import { IOEither } from "fp-ts/lib/IOEither";
 import * as option from "fp-ts/lib/Option";
-
-/**
- * @summary
- * Asserts if the node is a descendant of the given ancestor.
- */
-export const contains = <T extends Node>(node: T) => <U extends Node>(
-  ancestor: U
-) => ancestor.contains(node);
+import { pipe } from "fp-ts/lib/pipeable";
+import { contains, containsInRoot } from "./retrieval";
 
 /**
  * If looking for the refChild = null version, please use appendChild.
@@ -31,36 +25,71 @@ export const insertBefore = <T extends Node, U extends Node>(
 
 /**
  * @summary
- * Add a child to the end of the parent's children.
+ * Inserts `node` as the first child of `parent`,
+ * returning the parent if it doesn't exist already.
  */
-export const appendChild = <T extends Node>(node: T) => <N extends Node>(
-  parent: N
-): IO<T> => () => parent.appendChild(node);
+export const prepend = <A extends Node>(node: A) => <E extends Node>(
+  parent: E
+): IOEither<E, A> =>
+  pipe(
+    parent,
+    ioEither.fromPredicate(containsInRoot(node), () => node),
+    ioEither.swap,
+    ioEither.chain((a) => insert(a, 0)(parent))
+  );
 
 /**
  * @summary
- * Remove a child.
+ * Adds a child to the end of the parent's children.
+ *
+ * Returns an error if it already exists in the DOM.
+ *
+ * @todo get root of parent and check that
+ */
+export const append = <A extends Node>(node: A) => <E extends Node>(
+  parent: E
+) =>
+  pipe(
+    ioEither.rightIO(() => parent),
+    ioEither.chain(
+      flow(
+        ioEither.fromPredicate(containsInRoot(node), () => node),
+        ioEither.swap,
+        ioEither.map((a) => parent.appendChild(a))
+      )
+    )
+  );
+
+/**
+ * @summary
+ * Removes a node from the DOM.
+ *
+ * Returns an error if it didn't exist in the first place.
  */
 export const remove = <T extends ChildNode>(node: T): IO<void> => () =>
   node.remove();
 
-const isInsertableIndex = (index: number, values: any[]) =>
+/**
+ * @summary
+ * Returns true if the index could be inserted into the array.
+ */
+const isInsertableIndex = (index: number, values: Array<any>) =>
   index >= 0 && index <= values.length;
 
 /**
  * @summary
  * Inserts a child at the given index.
- * If the index is out of the insertion range, null is returned.
+ * If the index is out of the insertion range, parent is returned.
  */
-export const insertChildAtIndex = <T extends Node>(node: T, index: number) => <
-  N extends Node
+export const insert = <A extends Node>(node: A, index: number) => <
+  E extends Node
 >(
-  parent: N
-) =>
+  parent: E
+): IOEither<E, A> =>
   pipe(
     Array.from(parent.childNodes),
     option.fromPredicate((c) => isInsertableIndex(index, c)),
     option.map(flow((a) => array.lookup(index + 1, a), option.toNullable)),
-    ioEither.fromOption(() => null),
+    ioEither.fromOption(() => parent),
     ioEither.map((ref) => parent.insertBefore(node, ref))
   );
