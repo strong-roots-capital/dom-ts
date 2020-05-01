@@ -37,7 +37,12 @@ Some bundlers can't module commonjs with tree shaking on, which is why this opti
 
 ## examples
 
-Gotta do these soon...
+Gotta do these soon... Maybe they could go in their own docs.
+
+## Notes for myself...
+
+I want to make a typeclass for DOM.
+This would allow assertions like `NodeIsInThis`
 
 ## features
 
