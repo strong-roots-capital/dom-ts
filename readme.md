@@ -44,6 +44,8 @@ Gotta do these soon... Maybe they could go in their own docs.
 I want to make a typeclass for DOM.
 This would allow assertions like `NodeIsInThis`
 
+Use `Reader` to inject the dependenc of the `document`.
+
 ## features
 
 - Replaces imperative prototype methods on objects with functions, for more predictable workflow.
@@ -55,5 +57,5 @@ This would allow assertions like `NodeIsInThis`
 ## Primary differences
 
 - Methods returning `E | null` are transformed to `Option<E>`
-- Methods returning `nodelist<E>` are transformed to `Array<E>`
+- Methods returning `nodelist<E>` are transformed to `Either<null,NonEmptyArray<E>>`
 - Inserting an already existing node into the DOM doesn't work. Instead, delete it first.

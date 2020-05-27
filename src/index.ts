@@ -1,3 +1,4 @@
 export * from "./dom-node";
-export * from "./query-selectors";
-// export * from "./event-listeners";
+export * from "./query-selector";
+export * from "./query-selector-all";
+export * from "./contains";

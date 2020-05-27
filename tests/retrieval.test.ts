@@ -1,6 +1,6 @@
 //@ts-ignore
 import * as jsdom from "global-jsdom";
-import { contains } from "../src/retrieval";
+import { contains } from "../src/contains";
 
 let cleanup: Function;
 beforeEach(() => (cleanup = jsdom()));

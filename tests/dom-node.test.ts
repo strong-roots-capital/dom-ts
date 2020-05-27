@@ -3,7 +3,7 @@ import { pipe } from "fp-ts/lib/pipeable";
 //@ts-ignore
 import * as jsdom from "global-jsdom";
 import { insert, insertBefore, append } from "../src/dom-node";
-import { contains } from "../src/retrieval";
+import { contains } from "../src/contains";
 
 let cleanup: Function;
 beforeEach(() => (cleanup = jsdom()));
