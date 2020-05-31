@@ -2,6 +2,7 @@ import { array, either, option, readerEither } from "fp-ts";
 import { pipe } from "fp-ts/lib/pipeable";
 import { flow } from "fp-ts/lib/function";
 import { isDescendant } from "./contains";
+import { DomEnvironment } from "./util";
 
 /**
  * @todo have a better message with details about the message
@@ -11,10 +12,6 @@ export class CannotInsertError extends Error {
     const message = `Node "${descendant}" is already a descendant of "${ancestor}". This must be removed before we can insert a node. `;
     super(message);
   }
-}
-
-export interface DomEnvironment {
-  root: DocumentFragment;
 }
 
 export interface InsertAt {
