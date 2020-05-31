@@ -25,11 +25,9 @@ Note that `fp-ts` is a peer dependency.
 ## Consuming
 
 ```ts
-import {} from "dom-ts";
-import {} from "dom-ts/es6";
-import {} from "dom-ts/es6/*";
-import {} from "dom-ts/lib";
-import {} from "dom-ts/lib/*";
+import { contains, querySelector } from "dom-ts";
+import * as domts from "dom-ts/es6";
+import * as domts from "dom-ts/lib";
 ```
 
 `lib` is for commonjs, where as `es6` is esmodules.
@@ -49,7 +47,7 @@ Use `Reader` to inject the dependenc of the `document`.
 ## features
 
 - Replaces imperative prototype methods on objects with functions, for more predictable workflow.
-- Allows DOM errors to be handled before they enter the DOM, removing wasted rendering.
+- When plausible, allows DOM errors to be handled before they enter the DOM, removing wasted rendering.
 - Extremely typesafe, with overloads and generics included.
 - Expected DOM functions.
 - Additional utility functions.
