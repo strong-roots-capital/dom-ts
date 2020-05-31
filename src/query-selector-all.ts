@@ -1,7 +1,7 @@
-import { QueryMeta } from ".";
-import { CreateElementMeta } from "./types/maps";
+import { either, option, readerEither } from "fp-ts";
 import { pipe } from "fp-ts/lib/pipeable";
-import { either, readerEither, option } from "fp-ts";
+import { CreateElementMeta } from "./types/maps";
+import { QueryMeta } from "./util";
 
 export interface QuerySelectorAllTag {
   <S extends Q["tag"] = never, Q extends QueryMeta = QueryMeta>(

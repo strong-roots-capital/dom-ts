@@ -1,10 +1,7 @@
 import { either, option, readerEither } from "fp-ts";
 import { pipe } from "fp-ts/lib/pipeable";
-import { HTMLElementMetaUnion } from "./types/html-element-meta";
 import { CreateElementMeta } from "./types/maps";
-import { SVGElementMetaUnion } from "./types/svg-element-meta";
-
-export type QueryMeta = HTMLElementMetaUnion | SVGElementMetaUnion;
+import { QueryMeta } from "./util";
 
 export interface QuerySelectorTag {
   <S extends Q["tag"] = never, Q extends QueryMeta = QueryMeta>(
