@@ -3,5 +3,6 @@
   "compilerOptions": {
     "outDir": "./dist/lib",
     "module": "commonjs"
-  }
+  },
+  "exclude": ["**/*.test.*"]
 }
