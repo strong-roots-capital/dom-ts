@@ -2,17 +2,7 @@ import { array, either, option, readerEither } from "fp-ts";
 import { pipe } from "fp-ts/lib/pipeable";
 import { flow } from "fp-ts/lib/function";
 import { isDescendant } from "./contains";
-import { DomEnvironment } from "./util";
-
-/**
- * @todo have a better message with details about the message
- */
-export class CannotInsertError extends Error {
-  constructor(ancestor: Node, descendant: Node) {
-    const message = `Node "${descendant}" is already a descendant of "${ancestor}". This must be removed before we can insert a node. `;
-    super(message);
-  }
-}
+import { DomEnvironment, NodeExistsError } from "./util";
 
 export interface InsertAt {
   (index: number, newChild: Node): <P extends ParentNode & Node>(
@@ -20,7 +10,7 @@ export interface InsertAt {
   ) => readerEither.ReaderEither<
     DomEnvironment,
     // already in dom, so can't add it in.
-    CannotInsertError,
+    NodeExistsError,
     // index is out of insertable bounds
     option.Option<P>
   >;
@@ -44,7 +34,7 @@ export const insertAt: InsertAt = (index, newChild) => (parent) => ({
   root,
 }) => {
   const children = Array.from(parent.children);
-  const error = () => new CannotInsertError(parent, newChild);
+  const error = () => new NodeExistsError(parent, root);
   const getRefChild = (oElement: option.Option<Element>) =>
     pipe(
       oElement,
@@ -57,7 +47,6 @@ export const insertAt: InsertAt = (index, newChild) => (parent) => ({
 
   return pipe(
     children,
-    // index is out of insertable bounds
     option.fromPredicate((elements) => isInsertableBounds(index, elements)),
     option.chain((elements) =>
       pipe(
