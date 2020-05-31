@@ -16,9 +16,8 @@
     "build": "yarn build:lib && yarn build:es6",
     "build:es6": "tsc --project tsconfig.es6.json && ts-node scripts/es6-paths.ts",
     "build:lib": "tsc --project tsconfig.lib.json",
-    "test": "jest",
-    "prepublish": "yarn build",
-    "prepublishOnly": "yarn test"
+    "test": "jest --passWithNoTests",
+    "prepublishOnly": "yarn build && yarn test"
   },
   "files": [
     "LICENSE",
@@ -34,7 +33,6 @@
     "parcel-bundler": "^1.12.4",
     "ts-jest": "^25.4.0",
     "ts-node": "^8.9.1",
-    "ts-toolbelt": "^6.6.2",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
