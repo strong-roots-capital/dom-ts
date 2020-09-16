@@ -1,21 +1,6 @@
 {
   "compilerOptions": {
-    "pretty": true,
-    "listEmittedFiles": true,
-    "target": "es5" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */,
-    "lib": [
-      "ESNext",
-      "DOM"
-    ] /* Specify library files to be included in the compilation. */,
-    "moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */,
-    "declaration": true /* Generates corresponding '.d.ts' file. */,
-    "strict": true /* Enable all strict type-checking options. */,
-    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
-    // "esModuleInterop": true
-  },
-  "include": ["src"]
+    "module": "esnext",
+    "target": "esnext"
+  }
 }
