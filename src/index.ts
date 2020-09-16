@@ -1,6 +1,4 @@
-export * from "./query-selector";
-export * from "./query-selector-all";
-export * from "./contains";
-export * from "./util";
-export * as types from "./types";
-export * from "./insert-at";
+export * as document from "./document";
+export * as html from "./html";
+export * as svg from "./svg";
+export * as maps from "./maps";
