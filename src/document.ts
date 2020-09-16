@@ -1,6 +1,6 @@
 import { option as O } from "fp-ts";
 import { ReaderIO } from "fp-ts-contrib/ReaderIO";
-import { pipe } from "fp-ts/lib/function";
+import { pipe } from "fp-ts/function";
 import { AllElementMeta, MatchTagName } from "./maps";
 
 export function querySelector<K extends AllElementMeta["_tagName"]>(
