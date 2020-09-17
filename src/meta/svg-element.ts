@@ -1,7 +1,7 @@
 /**
  * All SVGElements with matching tagNames and eventMaps
  */
-import { CreateElementMeta } from "./maps";
+import { CreateElementMeta } from "./index";
 
 export type CreateSVGElementMeta<
   R extends string,
