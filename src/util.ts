@@ -1,2 +1,3 @@
-export const fromIterable = <T>(iterable: Iterable<T> | ArrayLike<T>): T[] =>
-  Array.from(iterable);
+export function fromIterable<T>(iterable: Iterable<T> | ArrayLike<T>): T[] {
+  return Array.from(iterable)
+}
