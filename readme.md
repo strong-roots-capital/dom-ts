@@ -10,7 +10,11 @@ fp-ts compatible implementations of DOM interfaces and related API's, as documen
 
 ## Note
 
-> todo: standard naming convention for maps.
+> todo:
+>
+> - standard naming convention for maps: meta
+> - smoke tests for declaration merging (at least manually test for now.)
+> - start some documentation, linking to MDN.
 
 ## Recommended Reading
 
