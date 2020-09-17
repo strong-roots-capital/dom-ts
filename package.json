@@ -2,43 +2,52 @@
   "name": "dom-ts",
   "version": "0.6.0",
   "description": "fp-ts binding for the DOM",
-  "source": "src/index.ts",
   "main": "dist/index.js",
   "module": "dist/index.module.js",
+  "browser": "dist/index.browser.js",
   "typings": "dist/index.d.ts",
   "author": "Wayne Van Son",
   "license": "MIT",
   "private": false,
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/waynevanson/dom-ts"
   },
   "scripts": {
     "watch": "jest --watch",
-    "build": "yarn microbundle",
+    "build": "parcel build src/index.ts",
     "test": "jest --passWithNoTests",
-    "prepublishOnly": "yarn build && yarn test"
+    "prepublish": "yarn build && yarn test"
   },
-  "files": [
-    "dist"
-  ],
   "devDependencies": {
+    "@babel/preset-typescript": "^7.10.4",
     "@types/jest": "^26.0.13",
-    "@types/parcel-bundler": "^1.12.1",
     "fp-ts": "^2.5.4",
+    "fp-ts-contrib": "^0.1.19",
     "global-jsdom": "^7.0.0",
     "jest": "^26.4.2",
     "jsdom": "^16.2.2",
-    "microbundle": "^0.12.3",
-    "parcel-bundler": "^1.12.4",
+    "parcel": "^2.0.0-beta.1",
     "ts-jest": "^26.3.0",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.0"
   },
   "peerDependencies": {
-    "fp-ts": "^2.5.4"
+    "fp-ts": "^2.5.4",
+    "fp-ts-contrib": "^0.1.19",
+    "typescript": "^4.0.0"
   },
-  "dependencies": {
-    "fp-ts-contrib": "^0.1.19"
+  "dependencies": {},
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-typescript"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-export-namespace-from"
+    ]
   }
 }
