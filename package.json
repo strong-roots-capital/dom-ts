@@ -17,7 +17,7 @@
     "url": "https://github.com/waynevanson/dom-ts"
   },
   "scripts": {
-    "watch": "jest --watch",
+    "watch": "jest --watchAll",
     "build": "parcel build src/index.ts",
     "test": "jest --passWithNoTests",
     "prepublish": "yarn build && yarn test",
