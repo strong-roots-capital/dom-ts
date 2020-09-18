@@ -1,25 +1,16 @@
 import { document as _ } from "./index"
 
 describe("document", () => {
-  beforeEach(() => {
-    document.body.innerHTML = ""
-  })
-
-  afterEach(() => {
-    document.body.innerHTML = ""
-  })
-
   describe.skip(_.appendChild, () => {})
 
   describe(_.contains, () => {
     const parent = document.createElement("ul")
     const child = document.createElement("li")
 
-    document.body.appendChild(parent)
     parent.appendChild(child)
 
     test("that test structure is correct", () => {
-      expect(document.body.innerHTML).toMatchInlineSnapshot(`"<ul><li></li></ul>"`)
+      expect(parent.outerHTML).toMatchInlineSnapshot(`"<ul><li></li></ul>"`)
     })
 
     it('returns true because "child" is a child of "parent"', () => {
