@@ -1,7 +1,7 @@
 /**
  * @summary
  * the `Document` interface has been implemented according the
- * [documentation hosted on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document).
+ * [Document via MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Document).
  */
 import { either as E, option as O } from "fp-ts"
 import * as RIO from "fp-ts-contrib/ReaderIO"
