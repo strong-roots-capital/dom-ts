@@ -1,5 +1,4 @@
 language: node_js
-os: linux
 cache: yarn
 
 jobs:
@@ -8,7 +7,7 @@ jobs:
     - stage: release
       node_js: lts/*
       # Advanced: optionally overwrite your default `script` step to skip the tests
-      script: yarn test
+      # script: skip
       deploy:
         provider: script
         skip_cleanup: true
