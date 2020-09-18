@@ -1,5 +1,7 @@
 import * as _ from "./document"
 
 describe("document", () => {
-  describe.skip(_.getElementById, () => {})
+  describe.skip(_.getElementById, () => {
+    test.todo("")
+  })
 })
