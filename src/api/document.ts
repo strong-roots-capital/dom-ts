@@ -13,15 +13,20 @@ export { querySelector, querySelectorAll } from "./parent-node"
 
 /**
  * @summary
- * Returns a reference to the first object with the specified value of the ID or NAME attribute
- * from within a `Document`.
+ * Retrieve an `Element` that contains the specified ID.
  *
- * @param elementId String that specifies the ID value. Case-insensitive.
- *
- * @description
- * [Available at MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)
+ * @param elementId A case-insensitive string that specifies the ID.
  *
  * @since 0.0.0?
+ *
+ * @description
+ * [Adapted from MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)
+ *
+ * The Document method `getElementById()` returns an `Element` object representing the element whose id property matches the specified string.
+ *
+ * Since element IDs are required to be unique if specified, they're a useful way to get access to a specific element quickly.
+ *
+ * If you need to get access to an element which doesn't have an ID, you can use `querySelector()` to find the element using any selector.
  */
 export function getElementById(elementId: string): RIO.ReaderIO<Document, O.Option<HTMLElement>> {
   return (document) => () => pipe(document.getElementById(elementId), O.fromNullable)
