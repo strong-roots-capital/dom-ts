@@ -14,13 +14,21 @@ fp-ts compatible implementations of DOM interfaces and related API's, as documen
 
 > todo:
 >
+> - contribute to fp-ts-contrib for some getMonoid combinators. Compare both to see if there's anything else missing.
 > - standard naming convention for maps: meta
 > - smoke tests for declaration merging (at least manually test for now.)
 > - start some documentation, linking to MDN.
+> - rename interfaces to lowercase, and use interfaces currently as a todo list.
+> - tests
+>   - do interfaces implement each other?
+>   - is there documentation for every function?
+>   - does shadow dom in document allow for 2 copies? Don't think so.
 
 ## Recommended Reading
 
 > todo: expand and make into a story.
+
+### What is `meta`?
 
 There is currently no way to infer what the event map is of an element via Typescript.
 Our solution was to manually go through each element and get the element's `tagName`, `Element` and `EventMap`.
