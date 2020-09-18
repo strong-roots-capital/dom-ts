@@ -19,6 +19,7 @@
   "scripts": {
     "build": "parcel build src/index.ts",
     "prepublish": "yarn build && yarn test",
+    "prepush": "yarn prepublish",
     "semantic-release": "semantic-release",
     "test": "jest --passWithNoTests",
     "watch": "jest --watchAll"
