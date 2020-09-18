@@ -9,6 +9,8 @@ describe("document", () => {
     document.body.innerHTML = ""
   })
 
+  describe.skip(_.appendChild, () => {})
+
   describe(_.contains, () => {
     const parent = document.createElement("ul")
     const child = document.createElement("li")
@@ -28,4 +30,10 @@ describe("document", () => {
       expect(_.contains(parent)(child)()).toBe(false)
     })
   })
+
+  describe.skip(_.createElement, () => {})
+  describe.skip(_.getElementById, () => {})
+  describe.skip(_.ownerDocument, () => {})
+  describe.skip(_.querySelector, () => {})
+  describe.skip(_.querySelectorAll, () => {})
 })
