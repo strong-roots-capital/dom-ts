@@ -34,6 +34,7 @@
     "fp-ts": "^2.5.4",
     "fp-ts-contrib": "^0.1.19",
     "global-jsdom": "^7.0.0",
+    "husky": "^4.3.0",
     "jest": "^26.4.2",
     "jsdom": "^16.2.2",
     "parcel": "^2.0.0-beta.1",
