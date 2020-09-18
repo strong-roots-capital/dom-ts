@@ -1,6 +1,6 @@
 import { io as IO, option as O } from "fp-ts"
 import * as RIO from "fp-ts-contrib/ReaderIO"
-import { constVoid, flow, pipe } from "fp-ts/function"
+import { constVoid, flow, identity, pipe } from "fp-ts/function"
 
 export function contains(child: Node): RIO.ReaderIO<Node, boolean> {
   return (node) => () => node.contains(child)
@@ -9,17 +9,24 @@ export function contains(child: Node): RIO.ReaderIO<Node, boolean> {
 export const ownerDocument: RIO.ReaderIO<Node, O.Option<Document>> = (node) => () =>
   pipe(node.ownerDocument, O.fromNullable)
 
-export function childExistsInNodeDocument(newChild: Node): RIO.ReaderIO<Node, O.Option<void>> {
+export function getRootNode(options?: Required<GetRootNodeOptions>): RIO.ReaderIO<Node, Node> {
+  return (node) => () => node.getRootNode(options)
+}
+
+/**
+ * @internal
+ */
+export function childExistsInNodeDOM(newChild: Node): RIO.ReaderIO<Node, O.Option<void>> {
   return pipe(
-    ownerDocument,
-    RIO.chain(O.traverse(RIO.Applicative)(flow(contains(newChild), RIO.fromIO))),
-    RIO.map(O.map(constVoid))
+    getRootNode({ composed: false }),
+    RIO.chain(RIO.fromIOK(contains(newChild))),
+    RIO.map(flow(O.fromPredicate(identity), O.map(constVoid)))
   )
 }
 
 export function appendChild(newChild: Node): RIO.ReaderIO<Node, O.Option<void>> {
   return pipe(
-    childExistsInNodeDocument(newChild),
+    childExistsInNodeDOM(newChild),
     // reverse
     RIO.map(O.fromPredicate(O.isNone)),
     RIO.chain(O.traverse(RIO.Applicative)(() => unsafeAppendChild(newChild)))
