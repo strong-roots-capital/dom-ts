@@ -7,7 +7,7 @@
   "module": "dist/dom-ts.esm.js",
   "browser": "dist/dom-ts.browser.js",
   "unpkg": "dist/dom-ts.umd.js",
-  "types": "dist/dom-ts.d.ts",
+  "types": "dist/index.d.ts",
   "author": "Wayne Van Son",
   "license": "MIT",
   "private": false,
