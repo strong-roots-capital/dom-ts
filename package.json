@@ -10,7 +10,8 @@
   "license": "MIT",
   "exports": {
     ".": "./dist/index.js",
-    "./meta": "./dist/meta/"
+    "./meta": "./dist/meta/",
+    "./": "./dist"
   },
   "private": false,
   "engines": {
