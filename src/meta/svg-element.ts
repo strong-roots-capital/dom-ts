@@ -1,205 +1,115 @@
 /**
  * All SVGElements with matching tagNames and eventMaps
  */
-import { CreateElementMeta } from "./index";
+import { CreateMetaElement } from "./index"
 
-export type CreateSVGElementMeta<
+export type CreateMetaSVGElement<
   R extends string,
   E extends SVGElement,
   A extends SVGElementEventMap = SVGElementEventMap
-> = CreateElementMeta<R, E, A>;
+> = CreateMetaElement<R, E, A>
 
-export type SVGAElementMeta = CreateSVGElementMeta<"a", SVGAElement>;
-export type SVGCircleElementMeta = CreateSVGElementMeta<
-  "circle",
-  SVGCircleElement
->;
-export type SVGClipPathElementMeta = CreateSVGElementMeta<
-  "clipPath",
-  SVGClipPathElement
->;
-export type SVGDefsElementMeta = CreateSVGElementMeta<"defs", SVGDefsElement>;
-export type SVGDescElementMeta = CreateSVGElementMeta<"desc", SVGDescElement>;
-export type SVGEllipseElementMeta = CreateSVGElementMeta<
-  "ellipse",
-  SVGEllipseElement
->;
-export type SVGFEBlendElementMeta = CreateSVGElementMeta<
-  "feBlend",
-  SVGFEBlendElement
->;
-export type SVGFEColorMatrixElementMeta = CreateSVGElementMeta<
+export type SVGAElementMeta = CreateMetaSVGElement<"a", SVGAElement>
+export type SVGCircleElementMeta = CreateMetaSVGElement<"circle", SVGCircleElement>
+export type SVGClipPathElementMeta = CreateMetaSVGElement<"clipPath", SVGClipPathElement>
+export type SVGDefsElementMeta = CreateMetaSVGElement<"defs", SVGDefsElement>
+export type SVGDescElementMeta = CreateMetaSVGElement<"desc", SVGDescElement>
+export type SVGEllipseElementMeta = CreateMetaSVGElement<"ellipse", SVGEllipseElement>
+export type SVGFEBlendElementMeta = CreateMetaSVGElement<"feBlend", SVGFEBlendElement>
+export type SVGFEColorMatrixElementMeta = CreateMetaSVGElement<
   "feColorMatrix",
   SVGFEColorMatrixElement
->;
-export type SVGFEComponentTransferElementMeta = CreateSVGElementMeta<
+>
+export type SVGFEComponentTransferElementMeta = CreateMetaSVGElement<
   "feComponentTransfer",
   SVGFEComponentTransferElement
->;
-export type SVGFECompositeElementMeta = CreateSVGElementMeta<
-  "feComposite",
-  SVGFECompositeElement
->;
-export type SVGFEConvolveMatrixElementMeta = CreateSVGElementMeta<
+>
+export type SVGFECompositeElementMeta = CreateMetaSVGElement<"feComposite", SVGFECompositeElement>
+export type SVGFEConvolveMatrixElementMeta = CreateMetaSVGElement<
   "feConvolveMatrix",
   SVGFEConvolveMatrixElement
->;
-export type SVGFEDiffuseLightingElementMeta = CreateSVGElementMeta<
+>
+export type SVGFEDiffuseLightingElementMeta = CreateMetaSVGElement<
   "feDiffuseLighting",
   SVGFEDiffuseLightingElement
->;
-export type SVGFEDisplacementMapElementMeta = CreateSVGElementMeta<
+>
+export type SVGFEDisplacementMapElementMeta = CreateMetaSVGElement<
   "feDisplacementMap",
   SVGFEDisplacementMapElement
->;
-export type SVGFEDistantLightElementMeta = CreateSVGElementMeta<
+>
+export type SVGFEDistantLightElementMeta = CreateMetaSVGElement<
   "feDistantLight",
   SVGFEDistantLightElement
->;
-export type SVGFEFloodElementMeta = CreateSVGElementMeta<
-  "feFlood",
-  SVGFEFloodElement
->;
-export type SVGFEFuncAElementMeta = CreateSVGElementMeta<
-  "feFuncA",
-  SVGFEFuncAElement
->;
-export type SVGFEFuncBElementMeta = CreateSVGElementMeta<
-  "feFuncB",
-  SVGFEFuncBElement
->;
-export type SVGFEFuncGElementMeta = CreateSVGElementMeta<
-  "feFuncG",
-  SVGFEFuncGElement
->;
-export type SVGFEFuncRElementMeta = CreateSVGElementMeta<
-  "feFuncR",
-  SVGFEFuncRElement
->;
-export type SVGFEGaussianBlurElementMeta = CreateSVGElementMeta<
+>
+export type SVGFEFloodElementMeta = CreateMetaSVGElement<"feFlood", SVGFEFloodElement>
+export type SVGFEFuncAElementMeta = CreateMetaSVGElement<"feFuncA", SVGFEFuncAElement>
+export type SVGFEFuncBElementMeta = CreateMetaSVGElement<"feFuncB", SVGFEFuncBElement>
+export type SVGFEFuncGElementMeta = CreateMetaSVGElement<"feFuncG", SVGFEFuncGElement>
+export type SVGFEFuncRElementMeta = CreateMetaSVGElement<"feFuncR", SVGFEFuncRElement>
+export type SVGFEGaussianBlurElementMeta = CreateMetaSVGElement<
   "feGaussianBlur",
   SVGFEGaussianBlurElement
->;
-export type SVGFEImageElementMeta = CreateSVGElementMeta<
-  "feImage",
-  SVGFEImageElement
->;
-export type SVGFEMergeElementMeta = CreateSVGElementMeta<
-  "feMerge",
-  SVGFEMergeElement
->;
-export type SVGFEMergeNodeElementMeta = CreateSVGElementMeta<
-  "feMergeNode",
-  SVGFEMergeNodeElement
->;
-export type SVGFEMorphologyElementMeta = CreateSVGElementMeta<
+>
+export type SVGFEImageElementMeta = CreateMetaSVGElement<"feImage", SVGFEImageElement>
+export type SVGFEMergeElementMeta = CreateMetaSVGElement<"feMerge", SVGFEMergeElement>
+export type SVGFEMergeNodeElementMeta = CreateMetaSVGElement<"feMergeNode", SVGFEMergeNodeElement>
+export type SVGFEMorphologyElementMeta = CreateMetaSVGElement<
   "feMorphology",
   SVGFEMorphologyElement
->;
-export type SVGFEOffsetElementMeta = CreateSVGElementMeta<
-  "feOffset",
-  SVGFEOffsetElement
->;
-export type SVGFEPointLightElementMeta = CreateSVGElementMeta<
+>
+export type SVGFEOffsetElementMeta = CreateMetaSVGElement<"feOffset", SVGFEOffsetElement>
+export type SVGFEPointLightElementMeta = CreateMetaSVGElement<
   "fePointLight",
   SVGFEPointLightElement
->;
-export type SVGFESpecularLightingElementMeta = CreateSVGElementMeta<
+>
+export type SVGFESpecularLightingElementMeta = CreateMetaSVGElement<
   "feSpecularLighting",
   SVGFESpecularLightingElement
->;
-export type SVGFESpotLightElementMeta = CreateSVGElementMeta<
-  "feSpotLight",
-  SVGFESpotLightElement
->;
-export type SVGFETileElementMeta = CreateSVGElementMeta<
-  "feTile",
-  SVGFETileElement
->;
-export type SVGFETurbulenceElementMeta = CreateSVGElementMeta<
+>
+export type SVGFESpotLightElementMeta = CreateMetaSVGElement<"feSpotLight", SVGFESpotLightElement>
+export type SVGFETileElementMeta = CreateMetaSVGElement<"feTile", SVGFETileElement>
+export type SVGFETurbulenceElementMeta = CreateMetaSVGElement<
   "feTurbulence",
   SVGFETurbulenceElement
->;
-export type SVGFilterElementMeta = CreateSVGElementMeta<
-  "filter",
-  SVGFilterElement
->;
-export type SVGForeignObjectElementMeta = CreateSVGElementMeta<
+>
+export type SVGFilterElementMeta = CreateMetaSVGElement<"filter", SVGFilterElement>
+export type SVGForeignObjectElementMeta = CreateMetaSVGElement<
   "foreignObject",
   SVGForeignObjectElement
->;
-export type SVGGElementMeta = CreateSVGElementMeta<"g", SVGGElement>;
-export type SVGImageElementMeta = CreateSVGElementMeta<
-  "image",
-  SVGImageElement
->;
-export type SVGLineElementMeta = CreateSVGElementMeta<"line", SVGLineElement>;
-export type SVGLinearGradientElementMeta = CreateSVGElementMeta<
+>
+export type SVGGElementMeta = CreateMetaSVGElement<"g", SVGGElement>
+export type SVGImageElementMeta = CreateMetaSVGElement<"image", SVGImageElement>
+export type SVGLineElementMeta = CreateMetaSVGElement<"line", SVGLineElement>
+export type SVGLinearGradientElementMeta = CreateMetaSVGElement<
   "linearGradient",
   SVGLinearGradientElement
->;
-export type SVGMarkerElementMeta = CreateSVGElementMeta<
-  "marker",
-  SVGMarkerElement
->;
-export type SVGMaskElementMeta = CreateSVGElementMeta<"mask", SVGMaskElement>;
-export type SVGMetadataElementMeta = CreateSVGElementMeta<
-  "metadata",
-  SVGMetadataElement
->;
-export type SVGPathElementMeta = CreateSVGElementMeta<"path", SVGPathElement>;
-export type SVGPatternElementMeta = CreateSVGElementMeta<
-  "pattern",
-  SVGPatternElement
->;
-export type SVGPolygonElementMeta = CreateSVGElementMeta<
-  "polygon",
-  SVGPolygonElement
->;
-export type SVGPolylineElementMeta = CreateSVGElementMeta<
-  "polyline",
-  SVGPolylineElement
->;
-export type SVGRadialGradientElementMeta = CreateSVGElementMeta<
+>
+export type SVGMarkerElementMeta = CreateMetaSVGElement<"marker", SVGMarkerElement>
+export type SVGMaskElementMeta = CreateMetaSVGElement<"mask", SVGMaskElement>
+export type SVGMetadataElementMeta = CreateMetaSVGElement<"metadata", SVGMetadataElement>
+export type SVGPathElementMeta = CreateMetaSVGElement<"path", SVGPathElement>
+export type SVGPatternElementMeta = CreateMetaSVGElement<"pattern", SVGPatternElement>
+export type SVGPolygonElementMeta = CreateMetaSVGElement<"polygon", SVGPolygonElement>
+export type SVGPolylineElementMeta = CreateMetaSVGElement<"polyline", SVGPolylineElement>
+export type SVGRadialGradientElementMeta = CreateMetaSVGElement<
   "radialGradient",
   SVGRadialGradientElement
->;
-export type SVGRectElementMeta = CreateSVGElementMeta<"rect", SVGRectElement>;
-export type SVGScriptElementMeta = CreateSVGElementMeta<
-  "script",
-  SVGScriptElement
->;
-export type SVGStopElementMeta = CreateSVGElementMeta<"stop", SVGStopElement>;
-export type SVGStyleElementMeta = CreateSVGElementMeta<
-  "style",
-  SVGStyleElement
->;
-export type SVGSVGElementMeta = CreateSVGElementMeta<"svg", SVGSVGElement>;
-export type SVGSwitchElementMeta = CreateSVGElementMeta<
-  "switch",
-  SVGSwitchElement
->;
-export type SVGSymbolElementMeta = CreateSVGElementMeta<
-  "symbol",
-  SVGSymbolElement
->;
-export type SVGTextElementMeta = CreateSVGElementMeta<"text", SVGTextElement>;
-export type SVGTextPathElementMeta = CreateSVGElementMeta<
-  "textPath",
-  SVGTextPathElement
->;
-export type SVGTitleElementMeta = CreateSVGElementMeta<
-  "title",
-  SVGTitleElement
->;
-export type SVGTSpanElementMeta = CreateSVGElementMeta<
-  "tspan",
-  SVGTSpanElement
->;
-export type SVGUseElementMeta = CreateSVGElementMeta<"use", SVGUseElement>;
-export type SVGViewElementMeta = CreateSVGElementMeta<"view", SVGViewElement>;
+>
+export type SVGRectElementMeta = CreateMetaSVGElement<"rect", SVGRectElement>
+export type SVGScriptElementMeta = CreateMetaSVGElement<"script", SVGScriptElement>
+export type SVGStopElementMeta = CreateMetaSVGElement<"stop", SVGStopElement>
+export type SVGStyleElementMeta = CreateMetaSVGElement<"style", SVGStyleElement>
+export type SVGSVGElementMeta = CreateMetaSVGElement<"svg", SVGSVGElement>
+export type SVGSwitchElementMeta = CreateMetaSVGElement<"switch", SVGSwitchElement>
+export type SVGSymbolElementMeta = CreateMetaSVGElement<"symbol", SVGSymbolElement>
+export type SVGTextElementMeta = CreateMetaSVGElement<"text", SVGTextElement>
+export type SVGTextPathElementMeta = CreateMetaSVGElement<"textPath", SVGTextPathElement>
+export type SVGTitleElementMeta = CreateMetaSVGElement<"title", SVGTitleElement>
+export type SVGTSpanElementMeta = CreateMetaSVGElement<"tspan", SVGTSpanElement>
+export type SVGUseElementMeta = CreateMetaSVGElement<"use", SVGUseElement>
+export type SVGViewElementMeta = CreateMetaSVGElement<"view", SVGViewElement>
 
-export type AllSVGElementMeta =
+export type MetaAllSVGElement =
   | SVGAElementMeta
   | SVGCircleElementMeta
   | SVGClipPathElementMeta
@@ -256,4 +166,4 @@ export type AllSVGElementMeta =
   | SVGTitleElementMeta
   | SVGTSpanElementMeta
   | SVGUseElementMeta
-  | SVGViewElementMeta;
+  | SVGViewElementMeta

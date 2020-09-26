@@ -51,8 +51,8 @@ export function getElementById(elementId: string): RIO.ReaderIO<Document, O.Opti
  * The user could still input the wrong one in.
  */
 export function createElement<
-  K extends meta.AllElementMeta["_tagName"],
-  L extends meta.AllElementMeta["_tagName"]
+  K extends meta.MetaAllElement["_tagName"],
+  L extends meta.MetaAllElement["_tagName"]
 >(
   tagName: K,
   options: { is: L }
@@ -61,7 +61,7 @@ export function createElement<
   E.Either<HTMLUnknownElement, meta.MatchTagName<K>["_element"] & meta.MatchTagName<L>["_element"]>
 >
 
-export function createElement<K extends meta.AllElementMeta["_tagName"]>(
+export function createElement<K extends meta.MetaAllElement["_tagName"]>(
   tagName: K
 ): RIO.ReaderIO<Document, E.Either<HTMLUnknownElement, meta.MatchTagName<K>["_element"]>>
 

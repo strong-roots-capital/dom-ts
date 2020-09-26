@@ -1,32 +1,32 @@
-import { AllHTMLElementMeta } from "./html-element"
-import { AllSVGElementMeta } from "./svg-element"
+import { MetaAllHTMLElement } from "./html-element"
+import { MetaAllSVGElement } from "./svg-element"
 
-export type CreateElementMeta<R extends string, E extends Element, A extends ElementEventMap> = {
+export type CreateMetaElement<R extends string, E extends Element, A extends ElementEventMap> = {
   _tagName: R
   _element: E
   _eventMap: A
 }
 
-export type AllElementMetaInternal = AllHTMLElementMeta | AllSVGElementMeta
+export type MetaAllHTMLSVGElement = MetaAllHTMLElement | MetaAllSVGElement
 
 // Users can use module augmentation to append additional types,
 // but they should interesect their types with `AllElementMetaInternal`
-export type AllElementMeta = AllElementMetaInternal
+export type MetaAllElement = MetaAllHTMLSVGElement
 
-export type MatchTagName<R extends string> = AllElementMeta extends infer T
-  ? T extends CreateElementMeta<R, infer E, infer A>
-    ? CreateElementMeta<R, E, A>
+export type MatchTagName<R extends string> = MetaAllElement extends infer T
+  ? T extends CreateMetaElement<R, infer E, infer A>
+    ? CreateMetaElement<R, E, A>
     : never
   : never
 
-export type MatchElement<E extends HTMLElement> = AllElementMeta extends infer T
-  ? T extends CreateElementMeta<infer R, E, infer A>
-    ? CreateElementMeta<R, E, A>
+export type MatchElement<E extends HTMLElement> = MetaAllElement extends infer T
+  ? T extends CreateMetaElement<infer R, E, infer A>
+    ? CreateMetaElement<R, E, A>
     : never
   : never
 
-export type MatchEventMap<A extends HTMLElementEventMap> = AllElementMeta extends infer T
-  ? T extends CreateElementMeta<infer R, infer E, A>
-    ? CreateElementMeta<R, E, A>
+export type MatchEventMap<A extends HTMLElementEventMap> = MetaAllElement extends infer T
+  ? T extends CreateMetaElement<infer R, infer E, A>
+    ? CreateMetaElement<R, E, A>
     : never
   : never
