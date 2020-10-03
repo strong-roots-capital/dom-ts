@@ -1,6 +1,6 @@
 {
   "name": "dom-ts",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "fp-ts binding for the DOM",
   "main": "cjs/index.js",
   "module": "es6/index.esm.js",
