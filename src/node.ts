@@ -27,7 +27,6 @@ function childExistsInNodeDOM(newChild: Node): RIO.ReaderIO<Node, O.Option<void>
 export function appendChild(newChild: Node): RIO.ReaderIO<Node, O.Option<void>> {
   return pipe(
     childExistsInNodeDOM(newChild),
-    // reverse
     RIO.map(O.fromPredicate(O.isNone)),
     RIO.chain(O.traverse(RIO.Applicative)(() => unsafeAppendChild(newChild)))
   )

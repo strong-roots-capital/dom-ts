@@ -1,3 +1,5 @@
 export * as document from "./document"
 export * as node from "./node"
-export * as meta from "./meta"
+export * as metaElement from "./meta-element"
+export * as metaHTMLElement from "./meta-html-element"
+export * as metaSVGElement from "./meta-svg-element"

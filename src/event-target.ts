@@ -1,5 +1,4 @@
 import * as RIO from "fp-ts-contrib/lib/ReaderIO"
-import * as meta from "./meta"
 
 // todo - event map
 export function addEventListener(): RIO.ReaderIO<EventTarget, void> {

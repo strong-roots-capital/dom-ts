@@ -1,12 +1,12 @@
 import { option as O, readonlyArray as ROA } from "fp-ts"
 import { ReaderIO } from "fp-ts-contrib/ReaderIO"
 import { pipe } from "fp-ts/function"
-import { MetaAllElement, MatchTagName } from "./meta"
+import { AllElementMeta, MatchElementTagName } from "./meta-element"
 import { fromIterable } from "./util"
 
-export function querySelector<K extends MetaAllElement["_tagName"]>(
+export function querySelector<K extends AllElementMeta["_tagName"]>(
   selector: K
-): ReaderIO<ParentNode, O.Option<MatchTagName<K>["_element"]>>
+): ReaderIO<ParentNode, O.Option<MatchElementTagName<K>["_element"]>>
 
 export function querySelector<A extends Element>(
   selector: string
@@ -18,9 +18,9 @@ export function querySelector<A extends Element>(
   return (parentNode) => () => pipe(parentNode.querySelector<A>(selector), O.fromNullable)
 }
 
-export function querySelectorAll<K extends MetaAllElement["_tagName"]>(
+export function querySelectorAll<K extends AllElementMeta["_tagName"]>(
   selector: K
-): ReaderIO<ParentNode, ReadonlyArray<MatchTagName<K>["_element"]>>
+): ReaderIO<ParentNode, ReadonlyArray<MatchElementTagName<K>["_element"]>>
 
 export function querySelectorAll<A extends Element>(
   selector: string

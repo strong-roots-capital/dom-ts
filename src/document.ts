@@ -6,7 +6,7 @@
 import { either as E, option as O } from "fp-ts"
 import * as RIO from "fp-ts-contrib/ReaderIO"
 import { pipe } from "fp-ts/function"
-import * as meta from "./meta"
+import { AllElementMeta, MatchElementTagName } from "./meta-element"
 
 export { appendChild, contains, ownerDocument, unsafeAppendChild } from "./node"
 export { querySelector, querySelectorAll } from "./parent-node"
@@ -51,19 +51,22 @@ export function getElementById(elementId: string): RIO.ReaderIO<Document, O.Opti
  * The user could still input the wrong one in.
  */
 export function createElement<
-  K extends meta.MetaAllElement["_tagName"],
-  L extends meta.MetaAllElement["_tagName"]
+  K extends AllElementMeta["_tagName"],
+  L extends AllElementMeta["_tagName"]
 >(
   tagName: K,
   options: { is: L }
 ): RIO.ReaderIO<
   Document,
-  E.Either<HTMLUnknownElement, meta.MatchTagName<K>["_element"] & meta.MatchTagName<L>["_element"]>
+  E.Either<
+    HTMLUnknownElement,
+    MatchElementTagName<K>["_element"] & MatchElementTagName<L>["_element"]
+  >
 >
 
-export function createElement<K extends meta.MetaAllElement["_tagName"]>(
+export function createElement<K extends AllElementMeta["_tagName"]>(
   tagName: K
-): RIO.ReaderIO<Document, E.Either<HTMLUnknownElement, meta.MatchTagName<K>["_element"]>>
+): RIO.ReaderIO<Document, E.Either<HTMLUnknownElement, MatchElementTagName<K>["_element"]>>
 
 export function createElement(
   tagName: string,
