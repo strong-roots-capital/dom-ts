@@ -6,7 +6,7 @@
 import { either as E, option as O } from "fp-ts"
 import * as RIO from "fp-ts-contrib/ReaderIO"
 import { pipe } from "fp-ts/function"
-import * as meta from "../meta"
+import * as meta from "./meta"
 
 export { appendChild, contains, ownerDocument, unsafeAppendChild } from "./node"
 export { querySelector, querySelectorAll } from "./parent-node"

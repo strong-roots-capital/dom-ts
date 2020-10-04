@@ -1,8 +1,8 @@
 import { option as O, readonlyArray as ROA } from "fp-ts"
 import { ReaderIO } from "fp-ts-contrib/ReaderIO"
 import { pipe } from "fp-ts/function"
-import { MetaAllElement, MatchTagName } from "../meta"
-import { fromIterable } from "../util"
+import { MetaAllElement, MatchTagName } from "./meta"
+import { fromIterable } from "./util"
 
 export function querySelector<K extends MetaAllElement["_tagName"]>(
   selector: K

@@ -19,7 +19,7 @@ export function getRootNode(options?: Required<GetRootNodeOptions>): RIO.ReaderI
 function childExistsInNodeDOM(newChild: Node): RIO.ReaderIO<Node, O.Option<void>> {
   return pipe(
     getRootNode({ composed: false }),
-    RIO.chain(RIO.fromIOK(contains(newChild))),
+    RIO.chain((node) => RIO.fromIOK(contains(newChild))(node)),
     RIO.map(flow(O.fromPredicate(identity), O.map(constVoid)))
   )
 }
