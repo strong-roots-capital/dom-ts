@@ -1,5 +1,5 @@
 {
-  "name": "dom-ts",
+  "name": "@waynevanson/dom-ts",
   "version": "7.0.0",
   "description": "fp-ts binding for the DOM",
   "main": "dist/cjs/index.js",
