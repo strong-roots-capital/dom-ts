@@ -42,7 +42,7 @@ jobs:
       # Only release to NPM when we're on the master branch.
       # Don't release if this is the template.
       - name: Release
-        if: ${{ success() && github.ref == 'refs/heads/master' && github.repository != 'waynevanson/template-typescript-library' }}
+        if: ${{ success() && github.ref == 'refs/heads/main' && github.repository != 'waynevanson/template-typescript-library' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn semantic-release
