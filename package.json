@@ -20,8 +20,7 @@
     "build:cjs": "tsc --project .config/tsconfig.cjs.json",
     "build:es6": "tsc --project .config/tsconfig.es6.json",
     "build:browser": "microbundle --tsconfig .config/tsconfig.build.json --strict -f umd -i src/index.ts -o dist/browser/index.js --pkg-main false",
-    "test": "jest",
-    "prepublishOnly": "yarn test && yarn build"
+    "test": "jest"
   },
   "peerDependencies": {
     "typescript": "^4.0.0.",
