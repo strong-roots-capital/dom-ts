@@ -1,18 +1,18 @@
-name: Release
+# build, test always.
+# release if on main branch
+name: Test, Build and Release
 
-on:
-  push:
-    branches:
-      - master
+on: [pull_request, push]
 
 jobs:
-  release:
-    name: Release
+  main:
+    name: Main
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-      - name: Use node@14.x
+      - name: Setup Node Environment
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
@@ -21,18 +21,28 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - uses: actions/cache@v2
+      - name: Cache Dependencies
+        uses: actions/cache@v2
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
 
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Test
+        run: yarn test
+
+      - name: Build
+        run: yarn build
+
+      # Only release to NPM when we're on the master branch.
+      # Don't release if this is the template.
       - name: Release
+        if: ${{ success() && github.ref == 'refs/heads/master' && github.repository != 'waynevanson/template-typescript-library' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: yarn semantic-release

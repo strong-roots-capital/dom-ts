@@ -2,63 +2,72 @@
   "name": "dom-ts",
   "version": "7.0.0",
   "description": "fp-ts binding for the DOM",
-  "main": "cjs/index.js",
-  "module": "es6/index.esm.js",
-  "typings": "es6/index.d.ts",
-  "author": "Wayne Van Son",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es6/index.js",
+  "browser": "dist/browser/index.js",
+  "types": "dist/es6/index.d.ts",
   "license": "MIT",
-  "private": false,
-  "engines": {
-    "node": ">=12"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waynevanson/template-typescript-library.git"
   },
   "files": [
     "dist"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/waynevanson/dom-ts"
-  },
   "scripts": {
     "commit": "cz",
     "build": "npm-run-all --parallel build:*",
     "build:cjs": "tsc --project .config/tsconfig.cjs.json",
     "build:es6": "tsc --project .config/tsconfig.es6.json",
-    "prepublish": "yarn build && yarn test",
-    "semantic-release": "semantic-release",
+    "build:browser": "microbundle --tsconfig .config/tsconfig.build.json --strict -f umd -i src/index.ts -o dist/browser/index.js --pkg-main false",
     "test": "jest",
-    "watch": "jest --watchAll"
+    "prepublishOnly": "yarn test && yarn build"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "yarn prepublish"
+  "peerDependencies": {
+    "typescript": "^4.0.0.",
+    "fp-ts": "^2.8.3",
+    "fp-ts-contrib": "^0.1.21"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    },
+    "fp-ts": {
+      "optional": false
+    },
+    "fp-ts-contrib": {
+      "optional": false
     }
   },
-  "release": {
-    "branches": [
-      "master"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/changelog",
-        {
-          "changelogFile": "./CHANGELOG.md"
-        }
-      ],
-      "@semantic-release/github",
-      "@semantic-release/npm",
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "CHANGELOG.md",
-            "package.json"
-          ],
-          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-        }
-      ]
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.2",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "doctoc": "^1.4.0",
+    "eslint": "^7.10.0",
+    "fp-ts": "^2.8.3",
+    "fp-ts-contrib": "^0.1.21",
+    "husky": "^4.3.0",
+    "jest": "^26.5.0",
+    "lint-staged": "^10.4.0",
+    "microbundle": "^0.12.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.2",
+    "semantic-release": "^17.1.2",
+    "ts-jest": "^26.4.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.0"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
     ]
   },
   "config": {
@@ -66,40 +75,108 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "commitlint": {
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
     "extends": [
-      "@commitlint/config-conventional"
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn build"
+    }
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "eslint --fix",
+    "*.{js,css,md}": "prettier --write",
+    "readme.md": "doctoc --github readme.md"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "arrowParens": "always",
+    "semi": false
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "release": {
+    "branches": [
+      "+([0-9])?(.{+([0-9]),x}).x",
+      "main",
+      "next",
+      "next-major",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "changelog.md"
+        }
+      ],
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      {
+        "assets": [
+          "*.tgz"
+        ]
+      },
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "changelog.md",
+            "package.json"
+          ],
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }
+      ]
     ]
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
-    "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.0",
-    "@types/jest": "^26.0.13",
-    "@typescript-eslint/eslint-plugin": "^4.1.1",
-    "@typescript-eslint/parser": "^4.1.1",
-    "commitizen": "^4.2.1",
-    "eslint": "^7.9.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "fp-ts": "^2.5.4",
-    "fp-ts-contrib": "^0.1.21",
-    "global-jsdom": "^7.0.0",
-    "husky": "^4.3.0",
-    "jest": "^26.4.2",
-    "jsdom": "^16.2.2",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "semantic-release": "^17.1.2",
-    "semantic-release-cli": "^5.4.0",
-    "ts-jest": "^26.3.0",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.0.0"
-  },
-  "peerDependencies": {
-    "fp-ts": "^2.5.4",
-    "fp-ts-contrib": "^0.1.21",
-    "typescript": "^4.0.0"
   }
 }

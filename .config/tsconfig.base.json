@@ -1,9 +1,0 @@
-{
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "declaration": true,
-    "moduleResolution": "node",
-    "lib": ["DOM", "ESNext"],
-    "sourceMap": true
-  }
-}
