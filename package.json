@@ -1,6 +1,6 @@
 {
   "name": "@waynevanson/dom-ts",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "fp-ts binding for the DOM",
   "main": "dist/cjs/index.js",
   "module": "dist/es6/index.js",
