@@ -121,7 +121,7 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "node"
+    "testEnvironment": "jsdom"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --fix",
