@@ -1,14 +1,27 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
+
+- [dom-ts](#dom-ts)
+  - [Features](#features)
+  - [Meta](#meta)
+    - [Custom Elements and Custom Events](#custom-elements-and-custom-events)
+  - [Next Steps (Development)](#next-steps-development)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # dom-ts
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-fp-ts compatible implementations of DOM interfaces and related API's, as documented under [DOM interfaces at Mozilla](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model).
+[`fp-ts`](https://github.com/gcanti/fp-ts) compatible implementations of DOM interfaces and related API's, as documented under [DOM interfaces at Mozilla](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model).
 
 ## Features
 
-- Preconfigured types pairing together `tagName`, `Element` and `EventMap` for each DOM Element.
-- Detailed and inline documentation for each function
-- Additional unions for potentially filterable interfaces like `DOMError` and `DOMException`: These have strict types for error code numbers.
+- [x] [`fp-ts`](https://github.com/gcanti/fp-ts) compatible.
+- [x] Preconfigured types pairing together `tagName`, `Element` and `EventMap` for each DOM Element.
+- [ ] Additional unions for potentially filterable interfaces like `DOMError` and `DOMException`: These have strict types for error code numbers.
 
 ## Meta
 
@@ -56,4 +69,11 @@ and extend it with our new type:
  }
 ```
 
-We may make this more ergonomic in future and/or provide beter documentation.
+## Next Steps (Development)
+
+- [ ] Implement `ReaderIOEither` and `ReaderIOOption` so users can compose their monads.
+- [ ] smoke tests for declaration merging of meta (at least manually test for now.)
+- [ ] Detailed usage on each function and overload.
+- [ ] Testing
+  - [ ] do interfaces implement each other?
+  - [ ] is there documentation for every function?
