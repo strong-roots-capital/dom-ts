@@ -6,17 +6,22 @@ export function contains(child: Node): RIO.ReaderIO<Node, boolean> {
   return (node) => () => node.contains(child)
 }
 
-export const ownerDocument: RIO.ReaderIO<Node, O.Option<Document>> = (node) => () =>
-  pipe(node.ownerDocument, O.fromNullable)
+export const ownerDocument: RIO.ReaderIO<Node, O.Option<Document>> = (
+  node
+) => () => pipe(node.ownerDocument, O.fromNullable)
 
-export function getRootNode(options?: Required<GetRootNodeOptions>): RIO.ReaderIO<Node, Node> {
+export function getRootNode(
+  options?: Required<GetRootNodeOptions>
+): RIO.ReaderIO<Node, Node> {
   return (node) => () => node.getRootNode(options)
 }
 
 /**
  * @internal
  */
-function childExistsInNodeDOM(newChild: Node): RIO.ReaderIO<Node, O.Option<void>> {
+function childExistsInNodeDOM(
+  newChild: Node
+): RIO.ReaderIO<Node, O.Option<void>> {
   return pipe(
     getRootNode({ composed: false }),
     RIO.chain((node) => RIO.fromIOK(contains(newChild))(node)),
@@ -24,7 +29,9 @@ function childExistsInNodeDOM(newChild: Node): RIO.ReaderIO<Node, O.Option<void>
   )
 }
 
-export function appendChild(newChild: Node): RIO.ReaderIO<Node, O.Option<void>> {
+export function appendChild(
+  newChild: Node
+): RIO.ReaderIO<Node, O.Option<void>> {
   return pipe(
     childExistsInNodeDOM(newChild),
     RIO.map(O.fromPredicate(O.isNone)),
