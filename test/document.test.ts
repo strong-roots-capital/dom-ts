@@ -1,6 +1,6 @@
 import { option as O } from "fp-ts"
 import { pipe } from "fp-ts/lib/function"
-import * as _ from "./document"
+import * as _ from "../src/document"
 
 describe("document", () => {
   describe(_.getElementById, () => {

@@ -1,6 +1,7 @@
 {
   "name": "@waynevanson/dom-ts",
   "version": "8.0.0",
+  "homepage": "https://waynevanson.github.io/dom-ts",
   "description": "fp-ts binding for the DOM",
   "main": "dist/cjs/index.js",
   "module": "dist/es6/index.js",
@@ -49,6 +50,7 @@
     "@typescript-eslint/parser": "^4.4.0",
     "commitizen": "^4.2.1",
     "cz-conventional-changelog": "^3.3.0",
+    "docs-ts": "^0.5.2",
     "doctoc": "^1.4.0",
     "eslint": "^7.10.0",
     "fp-ts": "^2.8.3",
@@ -62,7 +64,7 @@
     "semantic-release": "^17.1.2",
     "ts-jest": "^26.4.1",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.0"
+    "typescript": "^4.0.5"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"

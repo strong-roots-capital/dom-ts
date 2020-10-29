@@ -1,6 +1,7 @@
-import * as _ from "./node"
+import * as _ from "../src/node"
 
 describe("Node", () => {
+  //eslint-disable-next-line
   describe.skip(_.appendChild, () => {})
 
   describe(_.contains, () => {
