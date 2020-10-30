@@ -1,17 +1,7 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-**Table of Contents** _generated with [DocToc](https://github.com/thlorenz/doctoc)_
-
-- [dom-ts](#dom-ts)
-  - [Features](#features)
-  - [Meta](#meta)
-    - [Custom Elements and Custom Events](#custom-elements-and-custom-events)
-  - [Next Steps (Development)](#next-steps-development)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # dom-ts
+  
+PLEASE NOTE this is not ready for production use. There's still a lot to do for DX to make it friendly.
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
